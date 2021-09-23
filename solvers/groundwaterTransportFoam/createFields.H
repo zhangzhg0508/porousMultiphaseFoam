@@ -97,7 +97,6 @@ volScalarField theta
     calculatedFvPatchScalarField::typeName
 );
 theta.dimensions().reset(dimless);
-theta = 0; // temporary initialisation
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////// RELATIVE PERMABILITY - CAPILLARY MODEL /////////////////////

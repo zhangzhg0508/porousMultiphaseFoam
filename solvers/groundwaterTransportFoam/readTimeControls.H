@@ -1,12 +1,16 @@
 /*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2011-2016 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
+  		  _______  ____    ____  ________  
+ 		 |_   __ \|_   \  /   _||_   __  | 
+   		   | |__) | |   \/   |    | |_ \_| 
+   		   |  ___/  | |\  /| |    |  _|    
+    		  _| |_    _| |_\/_| |_  _| |_     
+   		 |_____|  |_____||_____||_____|    
+   	     Copyright (C) Toulouse INP, Pierre Horgue
+
 License
-    This file is part of OpenFOAM.
+    This file is part of porousMultiphaseFoam, an extension of OpenFOAM
+    developed by Pierre Horgue (phorgue@imft.fr) and dedicated to multiphase 
+    flows through porous media.
 
     OpenFOAM is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by
@@ -48,7 +52,8 @@ const scalar truncationError_C =
 const scalar dTFactDecrease =
     runTime.controlDict().lookupOrDefault<scalar>("dTFactDecrease",0.8);
 
-word timeScheme = mesh.ddtScheme("ddt(" + composition.Y(0).name() + ')');
+word timeScheme(mesh.ddtScheme("ddt(" + composition.Y(0).name() + ')'));
+
 EulerD3dt3Scheme d3dt3Operator(mesh,runTime.deltaTValue());
 Foam::fv::EulerD2dt2Scheme<scalar> d2dt2Operator(mesh);
 scalarList dCdTmax(composition.Y().size());

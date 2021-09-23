@@ -1,4 +1,36 @@
 ************************
+*** PMFv
+***
+************************
+
+### Libraries
+
+- porousBoundaryConditions
+
+  - fixedHeadPressure/fixedHeadPressureSTL BCs have been deleted. They can be
+  replaced by usual fixedValue while initialize values with the utility
+  setBoundaryWaterLevel
+
+### Solvers
+
+- steadyGroundwaterFoam
+
+  - seepage has been added (similar to transient solver groundwaterFoam)
+
+### Tutorials
+
+- darcyFoam
+
+  - fix input folder (0 -> 0.org) to avoid paraview visualizations
+
+### utilities
+
+- setBoundaryWaterLevel
+
+  - replace setBoundaryHeadPressure as it can be used for potential or h
+  - version option (2D/3D) has been replaced by field option (h/potential)
+
+************************
 *** PMFv2107
 *** Bug Fix + tools folder 
 ************************

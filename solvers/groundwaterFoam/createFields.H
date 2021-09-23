@@ -72,7 +72,6 @@ volScalarField theta
     calculatedFvPatchScalarField::typeName
 );
 theta.dimensions().reset(dimless);
-theta = 0;
 
 // Relative permeability / Capillary pressure models
 autoPtr<relativePermeabilityModel> krModel = relativePermeabilityModel::New("krModel",transportProperties,theta);
