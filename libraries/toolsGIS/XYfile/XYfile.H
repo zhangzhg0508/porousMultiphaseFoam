@@ -47,6 +47,7 @@ SourceFiles
 #define XYfile_H
 
 #include "fvMesh.H"
+#include "IFstream.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -63,9 +64,17 @@ class XYfile
 private:
 
     word name_;
+    const fvMesh& mesh_;
+    label npoints_;
     scalarList x_;
     scalarList y_;
     scalarList values_;
+    List<List<Tuple2<label, scalar>>> mapping_ ;
+
+    DynamicList<string> splitLine(const string&, const string&, const label&, const word&);
+    void findClosestPoints(const point&, labelList&, scalarList&);
+    void constructMapping();
+    bool readMapping(IFstream&);
 
 public:
 
@@ -80,7 +89,9 @@ public:
     //- Construct from Istream
     XYfile
     (
-        const word& fileName
+        const word& fileName,
+        const fvMesh& mesh,
+        const label npoints=3
     );
     
     // Selectors
@@ -92,12 +103,15 @@ public:
     
     //- Access function
     const word& name() const {return name_;}
+    const fvMesh& mesh() const {return mesh_;}
     const scalarList& x() const {return x_;}
     const scalarList& y() const {return y_;}
     const scalarList& values() const {return values_;}
+    const  List<List<Tuple2<label, scalar>>>& mapping() const {return mapping_;}
 
     //- Linear interpolation using given point (based on the 3 closest points)
-    scalar interpolate(const point& position, label npoints);
+    scalar interpolate(const point& position, const scalar& offset=0);
+    void mapField(volScalarField& field, const scalar& offset=0);
 
 };
 

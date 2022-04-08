@@ -30,11 +30,11 @@ surfaceScalarField phiPcNull("phiPc",0*phiG);
 
 //- h equation residual
 volScalarField ResiduN
-  (
-             Ss*pcModel->Se() * fvc::ddt(h)
+    (
+        Ss*pcModel->Se() * fvc::ddt(h)
            + massConservativeTerms * fvc::ddt(theta)
            + (1 - massConservativeTerms) * pcModel->Ch() * fvc::ddt(h)
            - fvc::laplacian(Mf,h)
            + fvc::div(phiG)
            + sourceTerm
-  );
+    );

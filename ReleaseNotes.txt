@@ -1,6 +1,36 @@
 ************************
-*** PMFv
-***
+*** PMFvXXXX
+*** 
+************************
+
+### Utilities
+
+- subsetMeshFromDEM
+
+  - Generate automatically a subsetMesh using two DEM files, respectively for
+    the top and the bottom of the aquifer:
+
+    subsetMeshFromDEM /patch/to/file/top.xyz /patch/to/file/bottom.xyz
+
+    two patches are automatically generated: top and bottom.
+
+- setFieldsFromXY
+
+  - utility now generate a mapping file (.map) linking mesh cells to XY points.
+  If .map file is present, utility check that number of cells corresponds to the
+  mesh and that number of points corresponds to the interpolation. This allows
+  the re-use of similar interpolation with reduced cost. Works both for serial
+  and parallel runs.
+
+### Bug
+
+- groundwaterTransport2DFoam
+
+  - fix dryCells (C=0 and dC/dt=0)
+
+************************
+*** PMFv2107.1
+*** Minor fixes for PMFv2107
 ************************
 
 ### Libraries
