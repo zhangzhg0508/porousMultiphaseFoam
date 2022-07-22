@@ -71,8 +71,8 @@ int main(int argc, char *argv[])
 
     while (runTime.run())
     {
-        if (sourceEventIsPresent) sourceEvent.updateIndex(runTime.timeOutputValue());
-        forAll(patchEventList,patchEventi) patchEventList[patchEventi]->updateIndex(runTime.timeOutputValue());
+        if (sourceEventIsPresent) sourceEvent.updateIndex(runTime.userTimeValue());
+        forAll(patchEventList,patchEventi) patchEventList[patchEventi]->updateIndex(runTime.userTimeValue());
         #include "setDeltaT.H"
 
         runTime++;

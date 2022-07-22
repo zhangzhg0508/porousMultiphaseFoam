@@ -61,8 +61,8 @@ int main(int argc, char *argv[])
 
     while (runTime.run())
     {
-        if (infiltrationEventIsPresent) infiltrationEvent.updateIndex(runTime.timeOutputValue());
-        if (waterSourceEventIsPresent) waterSourceEvent.updateIndex(runTime.timeOutputValue());
+        if (infiltrationEventIsPresent) infiltrationEvent.updateIndex(runTime.userTimeValue());
+        if (waterSourceEventIsPresent) waterSourceEvent.updateIndex(runTime.userTimeValue());
         #include "setDeltaT.H"
 
         runTime++;

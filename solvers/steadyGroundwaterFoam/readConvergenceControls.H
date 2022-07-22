@@ -33,7 +33,7 @@ Description
 
 \*---------------------------------------------------------------------------*/
 
-const dictionary& residualDict = mesh.solutionDict().subDict("SIMPLE").subDict("residualControl");
+const dictionary& residualDict = mesh.solution().subDict("SIMPLE").subDict("residualControl");
 const scalar tolerance = residualDict.lookupOrDefault<scalar>("h", GREAT);
 
 if (!residualDict.found("h"))

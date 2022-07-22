@@ -44,7 +44,7 @@ SourceFiles
 #define eventFile_H
 
 #include "fvMesh.H"
-#include "TimeState.H"
+#include "Time.H"
 #include "ddtScheme.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -116,7 +116,7 @@ public:
         oldValues_ = currentValues_;
     }
     void updateIndex(const scalar& currentTime);
-    void updateValue(const TimeState& currentTime);
+    void updateValue(const Time& currentTime);
     void addIntermediateTimeSteps(const scalar& smallDT);
 
     //- Compute values from current and old considering the time discretization

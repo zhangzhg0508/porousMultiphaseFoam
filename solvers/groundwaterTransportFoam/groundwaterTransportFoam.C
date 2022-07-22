@@ -71,9 +71,9 @@ int main(int argc, char *argv[])
 
     while (runTime.run())
     {
-        if (eventIsPresent_water)  event_water.updateIndex(runTime.timeOutputValue());
-        forAll(tracerSourceEventList,tracerSourceEventi) tracerSourceEventList[tracerSourceEventi]->updateIndex(runTime.timeOutputValue());
-        forAll(patchEventList,patchEventi) patchEventList[patchEventi]->updateIndex(runTime.timeOutputValue());
+        if (eventIsPresent_water)  event_water.updateIndex(runTime.userTimeValue());
+        forAll(tracerSourceEventList,tracerSourceEventi) tracerSourceEventList[tracerSourceEventi]->updateIndex(runTime.userTimeValue());
+        forAll(patchEventList,patchEventi) patchEventList[patchEventi]->updateIndex(runTime.userTimeValue());
         #include "setDeltaT.H"
 
         runTime++;
