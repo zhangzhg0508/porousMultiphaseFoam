@@ -26,7 +26,6 @@ jobs:
       with:
         files: |
           docker/opensuse-mingw
-          .github/workflows/opensuse-mingw.yml
 
     - name: Log in to the Container registry
       if: steps.changed-files.outputs.modified_files != ''
