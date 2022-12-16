@@ -26,13 +26,12 @@ jobs:
     - name: Build
       run: |
            FOAM_VERBOSE=true &&  source /openfoam/etc/bashrc /openfoam/etc-mingw/prefs.sh && ls && ./Allwmake -j
-           zypper install -y zip
-           zip -r pmf-opensuse-mingw-${{matrix.openfoam_version}}.zip /github/home/OpenFOAM/user-${{matrix.openfoam_version}}/platforms/linux64MingwDPInt32Opt/
 
     - name: Installer archive upload push
       uses: actions/upload-artifact@v3
       with:
-          path: pmf-opensuse-mingw-${{matrix.openfoam_version}}.zip
+          name: pmf-opensuse-mingw-${{matrix.openfoam_version}}-${{github.event.release.name}}.zip
+          path: /github/home/OpenFOAM/user-${{matrix.openfoam_version}}/platforms/linux64MingwDPInt32Opt/
 
   publish:
     name: Publish
