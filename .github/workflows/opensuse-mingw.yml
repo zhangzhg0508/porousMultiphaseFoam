@@ -30,7 +30,7 @@ jobs:
     - name: Installer archive upload push
       uses: actions/upload-artifact@v3
       with:
-          name: pmf-opensuse-mingw-${{matrix.openfoam_version}}-${{github.event.release.name}}.zip
+          name: pmf-opensuse-mingw-${{matrix.openfoam_version}}
           path: /github/home/OpenFOAM/user-${{matrix.openfoam_version}}/platforms/linux64MingwDPInt32Opt/
 
   publish:
