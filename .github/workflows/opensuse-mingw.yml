@@ -27,7 +27,7 @@ jobs:
         files: |
           docker/opensuse-mingw
           .github/workflows/opensuse-mingw.yml
-          
+
     - name: Log in to the Container registry
       if: steps.changed-files.outputs.modified_files != ''
       uses: docker/login-action@v1
@@ -56,7 +56,7 @@ jobs:
       matrix:
         openfoam_version: [ v2206]
 
-    container: 'ghcr.io/${{github.actor}}/porousmultiphasefoam:openfoam-${{matrix.openfoam_version}}-opensuse-mingw'
+    container: 'ghcr.io/phorgue/porousmultiphasefoam:openfoam-${{matrix.openfoam_version}}-opensuse-mingw'
 
     steps:
 
