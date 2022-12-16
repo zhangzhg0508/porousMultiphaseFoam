@@ -1,9 +1,9 @@
 name: Windows release
 
 on:
-  push:
-    tags:
-      - "*"
+  release:
+    types: [created]
+
 jobs:
   build:
     name: Build
@@ -33,17 +33,17 @@ jobs:
           name: pmf-opensuse-mingw-${{matrix.openfoam_version}}
           path: /github/home/OpenFOAM/user-${{matrix.openfoam_version}}/platforms/linux64MingwDPInt32Opt/
 
-  release:
-    name: Release
+  publish:
+    name: Publish
     needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Download all artifacts
       uses: actions/download-artifact@v3
 
-    - name: Release
-      uses: softprops/action-gh-release@v1
+    - name: Publish assets
+      uses: alexellis/upload-assets@0.4.0
+      env:
+          GITHUB_TOKEN: ${{ github.token }}
       with:
-        fail_on_unmatched_files: true
-        files: pmf-opensuse-mingw-*
-        generate_release_notes: true
+          asset_paths: '["pmf-opensuse-mingw-*"]'
